@@ -1,4 +1,4 @@
-int main()
+int main(int argc,int tata)
 {
     int a;
     if (a == 0)
