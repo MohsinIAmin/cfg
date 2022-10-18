@@ -52,7 +52,8 @@ string extractVariableName(string s) {
         tem += s[index];
         index++;
     }
-    return trimLine(tem);
+    boost::algorithm::trim(tem);
+    return tem;
 }
 
 int extractValue(string s) {
@@ -168,21 +169,35 @@ void parseConditions() {
 
 void createTestCase(int conditionNumber) {
     int lineNo = variableCondition[0].lineNo;
-    for (int i = 0; i < conditionNumber; i++) {
-        
-        for (int j = 0; j < parameterList.size(); j++) {
-            cout << parameterList[j] << endl;
-            for (int k = 0; k < variableCondition.size(); k++) {
-                if (variableCondition[k].lineNo > lineNo) {
-                    lineNo = variableCondition[k].lineNo;
-                    break;
-                }
-                if (variableCondition[k].variableName.find(parameterList[j])) {
-
-                }
+    for (int i = 0; i < parameterList.size(); i++) {
+        string tempVarName = parameterList[i];
+        int tempTValue = 0;
+        for (int j = 0; j < variableCondition.size(); j++) {
+            cout << variableCondition.size() << endl;
+            if (variableCondition[j].lineNo > lineNo) {
+                lineNo = variableCondition[j].lineNo;
+                cout << "l"<<lineNo << endl;
+                break;
+            }
+            if (variableCondition[j].variableName == parameterList[i]) {
+                cout << parameterList[i] << ' ' << variableCondition[j].tValue << endl;
+                break;
             }
         }
     }
+    // for (int i = 0; i < conditionNumber; i++) {
+    //     for (int j = 0; j < parameterList.size(); j++) {
+    //         cout << parameterList[j] << endl;
+    //         for (int k = 0; k < variableCondition.size(); k++) {
+    //             if (variableCondition[k].lineNo > lineNo) {
+    //                 lineNo = variableCondition[k].lineNo;
+    //                 break;
+    //             }
+    //             if (variableCondition[k].variableName.find(parameterList[j])) {
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 int main(int argc, char *argv[]) {
