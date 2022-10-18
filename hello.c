@@ -1,6 +1,6 @@
-int main(int a,int b)
+int doSomething(int a, int b)
 {
-    int a,b;
+    int a, b;
     if (a == 0 || b == 1 && b > 4)
     {
         printf("TATA");
@@ -25,6 +25,6 @@ int main(int a,int b)
     {
         /* code */
     }
-    
+
     return 0;
 }
